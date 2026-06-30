@@ -1,0 +1,9 @@
+{
+  "extends": "@opencitadel/typescript-config/react.json",
+  "include": ["index.ts", "components/**/*"], 
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strictNullChecks": true
+  }
+}
