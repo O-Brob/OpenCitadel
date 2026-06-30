@@ -1,0 +1,11 @@
+# Modules
+node_modules
+
+# Turbo Cache
+.turbo
+
+# Build artifacts
+dist
+
+# IDE Specific
+.vscode
