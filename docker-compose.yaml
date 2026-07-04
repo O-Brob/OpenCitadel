@@ -1,0 +1,18 @@
+services: # All services automatically has access to .env variables
+  client:
+    build: 
+      context: .
+      dockerfile: apps/client/Dockerfile
+    container_name: opencitadel-client
+    ports:
+      - ${PORT}:80 # 80 exposed in container by nginx image.
+    depends_on:
+      - server
+
+  server:
+    build: 
+      context: .
+      dockerfile: apps/server/Dockerfile
+    container_name: opencitadel-server
+    environment:
+      SERVER_PORT: 5050
