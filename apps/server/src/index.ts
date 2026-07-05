@@ -3,7 +3,7 @@ import express from 'express';
 // Just a temporary test file while setting up monorepo,
 // to ensure everything works as expected.
 const app = express();
-const port = 5050;
+const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 

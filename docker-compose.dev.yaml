@@ -1,0 +1,38 @@
+services: # All services automatically has access to .env variables
+  # Start client in development mode w/ vite hot reload on relevant file changes
+  client:
+    build:
+      context: .
+      dockerfile: apps/client/Dockerfile
+      target: build
+    image: opencitadel-dev-client
+    container_name: opencitadel-dev-client
+    ports:
+      - 5173:5173 # Vite default ports are used for development
+    command: pnpm --filter @opencitadel/client dev --host # Start client in dev mode and expose vite
+    volumes: # Set volumes to access any files we may need in the container
+      - ./apps/client/src:/opencitadelapp/apps/client/src
+      - ./apps/client/public:/opencitadelapp/apps/client/public
+      - ./apps/client/package.json:/opencitadelapp/apps/client/package.json
+      - ./packages:/opencitadelapp/packages
+    depends_on:
+      - server
+
+  # Start server in development mode with hot reload on relevant file changes
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+      target: build
+    image: opencitadel-dev-server
+    container_name: opencitadel-dev-server
+    environment:
+      SERVER_PORT: 5050
+    command: pnpm --filter @opencitadel/server dev # Start server in dev mode
+    volumes: # Set volumes to access any files we may need in the container
+      - ./apps/server/src:/opencitadelapp/apps/server/src
+      - ./apps/server/package.json:/opencitadelapp/apps/server/package.json
+      - ./packages:/opencitadelapp/packages
+    # Keep container running suitable for development (std input open/simulate terminal interface)
+    stdin_open: true
+    tty: true

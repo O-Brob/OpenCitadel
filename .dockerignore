@@ -1,0 +1,21 @@
+# Build artefacts (apps are built in containers)
+node_modules
+dist
+.turbo
+
+# Git files
+.git
+.gitignore
+
+# Root files not needed for build/prod
+.env
+.env.example
+docker-compose.dev.yaml
+docker-compose.yaml
+LICENSE.md
+README.md
+eslint.config.mjs
+turbo.json
+
+# IDE-specific
+.vscode

@@ -4,10 +4,14 @@ $\dots$
 ## Overview
 *`OpenCitadel`* is an open-source, private, self-hosted full-stack team workspace platform. 
 
-`Current Stage:` Solidifying architectural design and improving roadmap, prior to production of an MVP.
+`Current Stage:` Implementing initial backend server & database.
 
 ## Table of Contents
-1. [Project Structure](#project-structure)
+1. [Architecture](#architecture)
+2. [Project Structure](#project-structure)
+
+## Architecture
+![OpenCitadel Service Architecture](./docs/diagrams/architecture.drawio.svg)
 
 ## Project Structure
 ````
@@ -16,7 +20,9 @@ OpenCitadel/                    (Monorepo project directory)
 │   ├── client/                 (React + Vite web frontend)
 │   │   ├── public/             (Client static assets)
 │   │   ├── src/                (Client source code)
+│   │   ├── Dockerfile          (Dockerfile for containerization)
 │   │   ├── index.html          (Client HTML entry point)
+│   │   ├── nginx.conf          (Nginx reverse proxy & static file serving)
 │   │   ├── package.json        (Client-specific package dependencies)
 │   │   ├── tsconfig.app.json   (TS sub-config for the browser code)
 │   │   ├── tsconfig.json       (Client main TS config)
@@ -24,6 +30,7 @@ OpenCitadel/                    (Monorepo project directory)
 │   │   └── vite.config.ts      (Vite build/dev config)
 │   └── server/                 (Node + Express backend)
 │       ├── src/                (Server source code)
+│       ├── Dockerfile          (Dockerfile for containerization)
 │       ├── package.json        (Server-specific package dependencies)
 │       └── tsconfig.json       (Server main TS config)
 ├── packages/                   (Shared packages for deployable apps)
@@ -37,8 +44,12 @@ OpenCitadel/                    (Monorepo project directory)
 │       ├── index.ts            (Centralized export of components)
 │       ├── package.json        (Package file for pnpm-workspace)
 │       └── tsconfig.json       (UI package TS config)
+├── .dockerignore               (files to ignore in docker COPY cmds)
+├── .env.example                (.env example/template file)
 ├── .gitignore                  (Main .gitignore of non-source files)
 ├── .npmrc                      (Package manager configurations)
+├── docker-compose.dev.yaml     (Compose file for dev w/ hot reloads)
+├── docker-compose.yaml         (Compose file for building/init all apps)
 ├── eslint.config.mjs           (Flat configuration file for ESLint)
 ├── LICENSE.md                  (Legal usage/distribution terms)
 ├── package.json                (Monorepo root package)
