@@ -10,6 +10,8 @@ dist
 # Root files not needed for build/prod
 .env
 .env.example
+docker-compose.dev.yaml
+docker-compose.yaml
 LICENSE.md
 README.md
 eslint.config.mjs
