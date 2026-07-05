@@ -4,10 +4,14 @@ $\dots$
 ## Overview
 *`OpenCitadel`* is an open-source, private, self-hosted full-stack team workspace platform. 
 
-`Current Stage:` Solidifying architectural design and improving roadmap, prior to production of an MVP.
+`Current Stage:` Implementing initial backend server & database.
 
 ## Table of Contents
-1. [Project Structure](#project-structure)
+1. [Architecture](#architecture)
+2. [Project Structure](#project-structure)
+
+## Architecture
+![OpenCitadel Service Architecture](./docs/diagrams/architecture.drawio.svg)
 
 ## Project Structure
 ````
@@ -18,7 +22,7 @@ OpenCitadel/                    (Monorepo project directory)
 │   │   ├── src/                (Client source code)
 │   │   ├── Dockerfile          (Dockerfile for containerization)
 │   │   ├── index.html          (Client HTML entry point)
-│   │   ├── nginx.conf          (Nginx config for getting static assets)
+│   │   ├── nginx.conf          (Nginx reverse proxy & static file serving)
 │   │   ├── package.json        (Client-specific package dependencies)
 │   │   ├── tsconfig.app.json   (TS sub-config for the browser code)
 │   │   ├── tsconfig.json       (Client main TS config)
