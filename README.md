@@ -9,6 +9,7 @@ $\dots$
 ## Table of Contents
 1. [Architecture](#architecture)
 2. [Project Structure](#project-structure)
+3. [License](#license)
 
 ## Architecture
 ![OpenCitadel Service Architecture](./docs/diagrams/architecture.drawio.svg)
@@ -58,3 +59,7 @@ OpenCitadel/                    (Monorepo project directory)
 ├── README.md                   (Project description & instructions)
 └── turbo.json                  (Turborepo configuration)
 ````
+
+## License
+This project is licensed under the MIT License.  
+See the full text in the [LICENSE.md](LICENSE.md) file in the repository root.
