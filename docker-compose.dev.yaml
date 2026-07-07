@@ -26,8 +26,6 @@ services: # All services automatically has access to .env variables
       target: build
     image: opencitadel-dev-server
     container_name: opencitadel-dev-server
-    environment:
-      SERVER_PORT: 5050
     command: pnpm --filter @opencitadel/server dev # Start server in dev mode
     volumes: # Set volumes to access any files we may need in the container
       - ./apps/server/src:/opencitadelapp/apps/server/src

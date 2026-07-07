@@ -14,5 +14,3 @@ services: # All services automatically has access to .env variables
       context: .
       dockerfile: apps/server/Dockerfile
     container_name: opencitadel-server
-    environment:
-      SERVER_PORT: 5050

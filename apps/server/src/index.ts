@@ -1,18 +1,12 @@
-import express from 'express';
+import app from "./app";
 
-// Just a temporary test file while setting up monorepo,
-// to ensure everything works as expected.
-const app = express();
-const port = process.env.SERVER_PORT;
+// Port 5050 used for the server within internal Docker network
+const port: number = 5050;
 
-app.use(express.json());
-
-app.get("/api/test", (_, res) => {
-  res.json({ 
-    message: "Server test successful ^_^" 
-  });
-});
-
-app.listen(port, () => {
-  console.log(`Test server running on http://localhost:${port}`);
+// Start listening for traffic on the port
+app.listen(port, (error: Error | undefined) => {
+    if(!error)
+        console.log(`Express app listening on port ${port}`);
+    else
+        console.log(`Error occurred, could not start server: ${error}`);
 });
