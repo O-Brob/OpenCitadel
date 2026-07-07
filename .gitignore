@@ -1,8 +1,9 @@
 # Modules
 node_modules
 
-# Environment Variables
+# Environment Variables / Secrets
 .env
+.npmrc
 
 # Turbo Cache
 .turbo
