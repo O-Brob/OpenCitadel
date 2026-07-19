@@ -14,3 +14,20 @@ services: # All services automatically has access to .env variables
       context: .
       dockerfile: apps/server/Dockerfile
     container_name: opencitadel-server
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - database
+
+  database:
+    image: postgres:18-alpine # Exposed on port 5432 in docker network by default
+    container_name: opencitadel-database
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - db_data:/var/lib/postgresql
+
+volumes:
+  db_data: # Volume for the database data
